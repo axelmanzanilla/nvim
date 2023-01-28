@@ -1,22 +1,45 @@
 noremap <SPACE> <Nop>
 let mapleader=" "
 
-set number
-set foldmethod=indent
+:set number
+:set foldmethod=indent
+:set tabstop=4
+:set shiftwidth=4
+:set softtabstop=4
+:set expandtab
 
 packloadall		" Load all plugins
 silent! helptags ALL	" Load helps files for all plugins
 autocmd BufRead * norma zR
+
+" Plugins
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'github/copilot.vim'
+Plug 'preservim/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-airline/vim-airline'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'ap/vim-css-color'
+Plug 'tc50cal/vim-terminal'
+Plug 'tpope/vim-commentary' " Comment lines
+Plug 'tpope/vim-surround' " Surround text
+
+call plug#end()
+
+:colorscheme molokai
 
 " Remapping keys
 noremap <C-s> :w<CR>
 noremap <C-q> :q<CR>
 noremap <C-Q> :qa<CR>
 noremap <C-z> :undo<CR>
-noremap <C-r> :redo<CR>
-noremap <C-d> :t.<CR>i
+noremap <C-y> :redo<CR>
+nnoremap <C-d> :t.<CR>i
 noremap <C-o> :e 
 noremap <C-k> :help key-notation<CR>
+nmap <C-l> gcc
+nmap <C-e> ysw
 
 " Split editor
 noremap <A-s> :vsplit<CR>
